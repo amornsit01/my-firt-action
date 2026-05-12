@@ -1,0 +1,26 @@
+name: CI - รันเทส
+
+on:
+  push:
+    branches: 
+        - main
+  pull_request:   
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ดึงโค้ดจาก repo
+        uses: actions/checkout@v4
+
+      - name: ติดตั้ง Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: ติดตั้ง dependencies
+        run: npm ci
+
+      - name: รันเทส
+        run: npm test
