@@ -23,3 +23,11 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Deploy to server
+        run: ./deploy.sh
+        env:
+          MY_NAME: ${{ secrets.YOUR_NAME }}
+
+      - name: Say Hello
+        run: echo "Hello, Github Actions! to  ${{ secrets.YOUR_NAME }}"
