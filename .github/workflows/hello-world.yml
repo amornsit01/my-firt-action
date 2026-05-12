@@ -13,4 +13,4 @@ jobs:
               uses: actions/checkout@v4
 
             - name: Say Hello
-              run: echo "Hello, Github Actions! from ${{github.action_repository}}"
+              run: echo "Hello, Github Actions! from ${{github.repository}}"
