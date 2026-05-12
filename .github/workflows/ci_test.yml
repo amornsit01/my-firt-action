@@ -1,26 +1,19 @@
-name: CI - Test
+name: Hello World
 
 on:
   push:
-    branches: 
-        - main
-  pull_request:   
+    branches: [main]
 
 jobs:
-  test:
+  say-hello:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ดึงโค้ดจาก repo
-        uses: actions/checkout@v4
+      - name: Print a message
+        run: echo "Hello, GitHub Actions!"
 
-      - name: ติดตั้ง Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - name: Show current date
+        run: date
 
-      - name: ติดตั้ง dependencies
-        run: npm ci
-
-      - name: รันเทส
-        run: npm test
+      - name: Show working directory
+        run: pwd
