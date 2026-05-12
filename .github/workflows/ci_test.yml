@@ -1,19 +1,25 @@
-name: Hello World
+name: CI - Run Tests
 
 on:
   push:
     branches: [main]
+  pull_request:
 
 jobs:
-  say-hello:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print a message
-        run: echo "Hello, GitHub Actions!"
+      - name: Check out code
+        uses: actions/checkout@v4
 
-      - name: Show current date
-        run: date
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Show working directory
-        run: pwd
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
